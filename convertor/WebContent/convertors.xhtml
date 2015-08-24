@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Werken met convertors</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>convertors voor getallen</h1>
+		<h:outputLabel for="txtInteger" value="Geheel getal: " />
+		<h:inputText id="txtInteger" value="#{convertorBean.intGetal}">
+			<f:validateLongRange minimum="42" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.intGetal}" />
+		<br />
+		<h:outputLabel for="txtDouble" value="Double getal: " />
+		<h:inputText id="txtDouble" value="#{convertorBean.doubleGetal}">
+			<f:convertNumber locale="nl" />
+			<f:validateDoubleRange maximum="42" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.doubleGetal}">
+			<f:convertNumber locale="nl" />
+		</h:outputText>
+		<br />
+
+		<h:outputLabel for="txtBedrag" value="Bedrag: " />
+		<h:inputText id="txtBedrag" value="#{convertorBean.bedrag}">
+			<f:convertNumber locale="nl" maxFractionDigits="2"
+				minFractionDigits="0" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.bedrag}">
+			<f:convertNumber locale="nl" type="currency" currencyCode="EUR" />
+		</h:outputText>
+		<br />
+		<h:outputLabel for="txtPercentage" value="Percentage: " />
+		<h:inputText id="txtPercentage" value="#{convertorBean.percentage}">
+			<f:convertNumber locale="nl" maxFractionDigits="2" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.percentage}">
+			<f:convertNumber locale="nl" type="percent" maxFractionDigits="1"
+				minFractionDigits="0" />
+		</h:outputText>
+		<br />
+		<h1>convertors voor datums</h1>
+		<h:outputLabel for="txtDatum" value="Datum: " />
+		<h:inputText id="txtDatum" value="#{convertorBean.datum}">
+			<f:convertDateTime locale="nl" type="date" dateStyle="short" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.datum}">
+			<f:convertDateTime locale="nl" type="date" dateStyle="short" />
+		</h:outputText>
+		<br />
+		<h:outputLabel for="txtTijd" value="Tijd: " />
+		<h:inputText id="txtTijd" value="#{convertorBean.tijd}">
+			<f:convertDateTime locale="nl" type="time" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.tijd}">
+			<f:convertDateTime locale="nl" type="time" />
+		</h:outputText>
+		<br />
+		<h:outputLabel for="txtDatumTijd" value="Datum en tijd: " />
+		<h:inputText id="txtDatumTijd"
+			validator="#{convertorBean.validateDatum}"
+			value="#{convertorBean.datumtijd}">
+			<f:convertDateTime locale="nl" type="both" dateStyle="short" />
+		</h:inputText>
+		<h:outputText value="#{convertorBean.datumtijd}">
+			<f:convertDateTime locale="nl" type="both" dateStyle="short" />
+		</h:outputText>
+		<br />
+		<h:commandButton value="Verstuur" />
+	</h:form>
+	<h:messages style="color:red;" />
+</h:body>
+</html>

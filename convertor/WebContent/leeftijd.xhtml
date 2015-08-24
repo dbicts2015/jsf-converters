@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+<h1>Register</h1>uuuuuuuuuuuu!!
+<h:form>
+	<h:outputLabel value="Naam: " for="naam"></h:outputLabel>
+	<h:inputText id="naam" value="#{gebruiker.naam}" required="true">
+		<f:validateRegex pattern="[a-zA-Z]+" />
+	</h:inputText>
+	<br />
+	<h:outputLabel value="Datum: " for="datum"></h:outputLabel>
+	<h:inputText id="datum" value="#{gebruiker.date}" required="true">
+		<f:convertDateTime locale="nl" type="date" dateStyle="short" />
+	</h:inputText>
+	<br />
+	<h:commandButton action="x" value="Bereken Leeftijd"></h:commandButton>
+</h:form>
+<h:messages></h:messages>
+</h:body>
+</html>
